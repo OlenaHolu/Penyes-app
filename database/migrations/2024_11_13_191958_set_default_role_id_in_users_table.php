@@ -16,8 +16,9 @@ return new class extends Migration
             // Obtén el ID del rol 'user'
             $userRoleId = Role::where('name', 'user')->first()->id;
 
-            // Cambia el valor por defecto de 'role_id' a ese ID
-            $table->unsignedBigInteger('role_id')->default($userRoleId)->change();
+             // Cambia el valor predeterminado de 'role_id' a ese ID
+             $table->unsignedBigInteger('role_id')->nullable()->default($userRoleId)->change();
+
         });
     }
 
