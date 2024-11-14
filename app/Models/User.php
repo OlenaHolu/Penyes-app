@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relación para obtener el rol del usuario
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    // Método para verificar si el usuario es admin
+    public function isAdmin()
+    {
+        return $this->role->name === 'admin';
+    }
 }
