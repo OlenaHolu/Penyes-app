@@ -38,6 +38,13 @@
                 </form>
             </div>
 
+            {{-- Botón para Crear Usuario --}}
+            <div class="mb-6">
+                <a href="{{ route('users.create') }}" style="background-color: lightblue" class="inline-block text-black px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 ">
+                    Crear Usuario
+                </a>
+            </div>
+
             {{-- Lista de Usuarios --}}
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-4">
