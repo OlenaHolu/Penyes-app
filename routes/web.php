@@ -37,6 +37,12 @@ Route::get('/search-user', function (Request $request) {
     return view('search-results')->with('users', $users);
 });
 
+Route::get('/users/{user}/edit', function ($user) {
+    $user = App\Models\User::findOrFail($user);
+    return view('user_edit', compact('user'));
+});
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
