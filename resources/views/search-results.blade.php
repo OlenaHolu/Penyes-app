@@ -1,3 +1,5 @@
+@extends('partials.baseAdmin')
+@section('content')
 <h1>Resultados de Búsqueda</h1>
 <table>
     <tr>
@@ -16,3 +18,4 @@
         </tr>
     @endforelse
 </table>
+@endsection
