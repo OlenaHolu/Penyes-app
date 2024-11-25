@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Crew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class CrewController extends Controller
 {
-    // Mostrar todos los usuarios
+    // Mostrar todos crews
     public function index()
     {
         $this->authorizeAdmin();
-        $users = User::all();
-        return view('users', compact('users'));
+        $crews = Crew::all();
+        return view('crews')->with('crews', $crews);
     }
 
-    // Buscar usuarios
+    // Buscar crews
     public function search(Request $request)
     {
         $this->authorizeAdmin();
         $query = $request->input('query');
-        $searchResults = User::where('name', 'like', '%' . $query . '%')->get();
+        $searchResults = Crew::where('name', 'like', '%' . $query . '%')->get();
         return view('search-results')->with('searchResults', $searchResults);
     }
 
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $this->authorizeAdmin();
-        $user = User::findOrFail($id);
+        $user = Crew::findOrFail($id);
         return view('user_edit', compact('user'));
     }
 
@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $this->authorizeAdmin();
 
-        $user = User::findOrFail($id);
+        $user = Crew::findOrFail($id);
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
@@ -56,15 +56,15 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
-    // Eliminar usuario
+    // Eliminar crew
     public function destroy($id)
     {
         $this->authorizeAdmin();
 
-        $user = User::findOrFail($id);
-        $user->delete();
+        $crew = Crew::findOrFail($id);
+        $crew->delete();
 
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew eliminado exitosamente.');
     }
 
     // Método privado para verificar si el usuario es admin
@@ -77,23 +77,26 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('userCreate');
+        return view('crewCreate');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'year' => 'required|numeric|digits:4',
+            'slogan'=> 'required|string|max:255',
+            'color' => 'required|string|max:255'
         ]);
 
-        User::create([
+        Crew::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'year' => $request->year,
+            'slogan' => $request->slogan,
+            'color' => $request->color,
+            'platform_id' => null
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew creado correctamente.');
     }
 }

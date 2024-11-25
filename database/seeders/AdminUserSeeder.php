@@ -9,6 +9,7 @@ use App\Models\Role;
 class AdminUserSeeder extends Seeder
 {
     public function run()
+    
     {
         // Obtén el rol 'admin'
         $adminRole = Role::where('name', 'admin')->first();
