@@ -41,5 +41,7 @@
             Guardar Usuario
         </button>
     </form>
+    <a href="{{ url('/users') }}" style="display: block; margin-top: 20px; text-decoration: underline;">Regresar
+        a la lista de usuarios</a>
 </div>
 @endsection

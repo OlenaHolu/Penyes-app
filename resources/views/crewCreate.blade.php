@@ -51,5 +51,9 @@
             Guardar Crew
         </button>
     </form>
+    {{-- Enlace para regresar a la lista de crews --}}
+    <a href="{{ url('/crews') }}" style="display: block; margin-top: 20px; text-decoration: underline;">
+        Regresar a la lista de crews
+    </a>
 </div>
 @endsection
