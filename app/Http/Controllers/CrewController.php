@@ -25,35 +25,30 @@ class CrewController extends Controller
         return view('search-results')->with('searchResults', $searchResults);
     }
 
-    // Mostrar formulario para editar un usuario específico
+    // Mostrar formulario para editar un crew específico
     public function edit($id)
     {
         $this->authorizeAdmin();
-        $user = Crew::findOrFail($id);
-        return view('user_edit', compact('user'));
+        $crew = Crew::findOrFail($id);
+        return view('crewEdit')->with('crew', $crew);
     }
 
-    // Actualizar usuario
+    // Actualizar crew
     public function update(Request $request, $id)
     {
         $this->authorizeAdmin();
 
-        $user = Crew::findOrFail($id);
+        $crew = Crew::findOrFail($id);
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:8',
+            'year' => 'required|numeric|digits:4',
+            'slogan'=> 'required|string|max:255',
+            'color' => 'required|string|max:255'
         ]);
 
-        if (!empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            unset($data['password']);
-        }
+        $crew->update($data);
 
-        $user->update($data);
-
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew actualizado exitosamente.');
     }
 
     // Eliminar crew
