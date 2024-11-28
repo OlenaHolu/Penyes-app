@@ -43,6 +43,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');
     Route::get('/crews/create', [CrewController::class, 'create'])->name('crews.create');
     Route::post('/crews', [CrewController::class, 'store'])->name('crews.store');
+    Route::get('crewsList', [CrewController::class, 'showCrewsList']);
+    Route::get('/crews/{crew}', [CrewController::class, 'showCrewInfo']);
 
 });
 

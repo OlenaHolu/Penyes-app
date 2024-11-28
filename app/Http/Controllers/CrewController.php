@@ -94,4 +94,13 @@ class CrewController extends Controller
 
         return redirect()->route('crews.index')->with('success', 'Crew creado correctamente.');
     }
+    public function showCrewsList(){
+        $crews = Crew::all();
+        return view('crewsList')->with('crews', $crews);
+    }
+
+    public function showCrewInfo($id){
+        $crew = Crew::findOrFail($id);
+        return view('crewInfo')->with('crew', $crew);
+    }
 }
