@@ -15,6 +15,30 @@
                 class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200"
             >
         </div>
+
+        <!-- Surname -->
+        <div>
+            <label for="surname" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Apellido</label>
+            <input 
+                type="text" 
+                id="surname" 
+                name="surname" 
+                required 
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200"
+            >
+        </div>
+
+        <!-- Born Day -->
+        <div>
+            <label for="bornDay" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Nacimiento</label>
+            <input 
+                type="date" 
+                id="bornDay" 
+                name="bornDay" 
+                required 
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200"
+            >
+        </div>
         <div>
             <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo Electrónico</label>
             <input 

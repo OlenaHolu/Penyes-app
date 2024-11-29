@@ -16,10 +16,12 @@ class AdminUserSeeder extends Seeder
 
         // Crea el usuario con rol 'admin'
         User::firstOrCreate(
-            ['email' => 'admin@admin.com'], // Email del usuario 'admin'
+            ['email' => 'admin@admin.com'], 
             [
                 'name' => 'admin',
-                'password' => 'admin', // Contraseña predeterminada
+                'surname' => 'admin',
+                'bornDay' => '2000-01-20',
+                'password' => 'admin', 
                 'role_id' => $adminRole->id,
             ]
         );

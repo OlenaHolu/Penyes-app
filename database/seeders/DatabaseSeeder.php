@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,       // Poblamos los roles primero
             AdminUserSeeder::class,  // Luego creamos el usuario admin
+            CrewSeeder::class,       //añadimos 10 Crews
         ]);
         
     }

@@ -23,6 +23,20 @@
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        <!-- Surname -->
+        <div>
+            <x-input-label for="surname" :value="__('Surname')" />
+            <x-text-input id="surname" name="surname" type="text" class="mt-1 block w-full" :value="old('surname', $user->surname)" required autocomplete="family-name" />
+            <x-input-error class="mt-2" :messages="$errors->get('surname')" />
+        </div>
+
+        <!-- Born Day -->
+        <div>
+            <x-input-label for="bornDay" :value="__('Born Day')" />
+            <x-text-input id="bornDay" name="bornDay" type="date" class="mt-1 block w-full" :value="old('bornDay', $user->bornDay ? $user->bornDay->format('Y-m-d') : '')" required />
+            <x-input-error class="mt-2" :messages="$errors->get('bornDay')" />
+        </div>
+
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />

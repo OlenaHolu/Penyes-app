@@ -41,6 +41,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255', // Validación para apellido
+            'bornDay' => 'required|date', // Validación para fecha de nacimiento
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8',
         ]);
@@ -84,12 +86,16 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'bornDay' => 'required|date', 
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
 
         User::create([
             'name' => $request->name,
+            'surname' => $request->surname, 
+            'bornDay' => $request->bornDay, 
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
