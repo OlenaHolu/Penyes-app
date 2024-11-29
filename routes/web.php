@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CrewController;
+use App\Http\Controllers\JoinRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserCrewJoinController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +45,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');
     Route::get('/crews/create', [CrewController::class, 'create'])->name('crews.create');
     Route::post('/crews', [CrewController::class, 'store'])->name('crews.store');
-    Route::get('crewsList', [CrewController::class, 'showCrewsList']);
-    Route::get('/crews/{crew}', [CrewController::class, 'showCrewInfo']);
+});
 
+Route::get('crewsList', [CrewController::class, 'showCrewsList']);
+Route::get('/crews/{crew}', [CrewController::class, 'showCrewInfo']);
+
+Route::post('/joinCrew/{id}', [UserCrewJoinController::class, 'joinCrew']);
+Route::get('/userJoinRequests', [UserCrewJoinController::class, 'index']);
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/adminJoinRequests', [JoinRequestController::class, 'index'])->name('joinRequest.index');
+    Route::post('/joinRequest/approve/{id}', [JoinRequestController::class, 'approve'])->name('joinRequest.approve');
+    Route::post('/joinRequest/reject/{id}', [JoinRequestController::class, 'reject'])->name('joinRequest.reject');
 });
 
 // Rutas de perfil del usuario autenticado

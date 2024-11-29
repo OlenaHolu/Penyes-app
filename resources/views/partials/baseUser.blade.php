@@ -13,6 +13,7 @@
                 <li class="mb-2"><a href="/dashboard" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Home</a></li>
                 <li class="mb-2"><a href="/crewsList" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Crews</a></li>
                 <li class="mb-2"><a href="/drawsList" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Draws</a></li>
+                <li class="mb-2"><a href="/userJoinRequests" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Mis Solicitudes</a></li>
             </ul>
         </aside>
 

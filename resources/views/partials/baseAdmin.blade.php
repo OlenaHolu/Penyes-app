@@ -16,6 +16,7 @@
                 <li class="mb-2"><a href="/platforms" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Platforms</a></li>
                 <li class="mb-2"><a href="/draws" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Draws</a></li>
                 <li class="mb-2"><a href="/payments" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Payments</a></li>
+                <li class="mb-2"><a href="/adminJoinRequests" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Join Requests</a></li>
             </ul>
         </aside>
 

@@ -26,6 +26,13 @@
                 </button>
             </form>
 
+            {{-- Mensajes de éxito o error --}}
+            @if(session('success'))
+                <p class="text-green-600">{{ session('success') }}</p>
+            @elseif(session('error'))
+                <p class="text-red-600">{{ session('error') }}</p>
+            @endif
+
             {{-- Enlace para regresar a la lista de crews --}}
             <a href="{{ url('/crewsList') }}" 
                 class="block text-blue-500 hover:underline text-sm font-medium">

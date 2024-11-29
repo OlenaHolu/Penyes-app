@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crew;
+use App\Models\User_crew_join;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +49,7 @@ class CrewController extends Controller
 
         $crew->update($data);
 
-        return redirect()->route('crews.index')->with('success', 'Crew actualizado exitosamente.');
+        return redirect('crews.index')->with('success', 'Crew actualizado exitosamente.');
     }
 
     // Eliminar crew
@@ -59,7 +60,7 @@ class CrewController extends Controller
         $crew = Crew::findOrFail($id);
         $crew->delete();
 
-        return redirect()->route('crews.index')->with('success', 'Crew eliminado exitosamente.');
+        return redirect('crews.index')->with('success', 'Crew eliminado exitosamente.');
     }
 
     // Método privado para verificar si el usuario es admin
@@ -92,7 +93,7 @@ class CrewController extends Controller
             'platform_id' => null
         ]);
 
-        return redirect()->route('crews.index')->with('success', 'Crew creado correctamente.');
+        return redirect('crews.index')->with('success', 'Crew creado correctamente.');
     }
     public function showCrewsList(){
         $crews = Crew::all();
