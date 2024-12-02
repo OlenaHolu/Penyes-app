@@ -49,7 +49,7 @@ class CrewController extends Controller
 
         $crew->update($data);
 
-        return redirect('crews.index')->with('success', 'Crew actualizado exitosamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew actualizado exitosamente.');
     }
 
     // Eliminar crew
@@ -60,7 +60,7 @@ class CrewController extends Controller
         $crew = Crew::findOrFail($id);
         $crew->delete();
 
-        return redirect('crews.index')->with('success', 'Crew eliminado exitosamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew eliminado exitosamente.');
     }
 
     // Método privado para verificar si el usuario es admin
@@ -93,7 +93,7 @@ class CrewController extends Controller
             'platform_id' => null
         ]);
 
-        return redirect('crews.index')->with('success', 'Crew creado correctamente.');
+        return redirect()->route('crews.index')->with('success', 'Crew creado correctamente.');
     }
     public function showCrewsList(){
         $crews = Crew::all();

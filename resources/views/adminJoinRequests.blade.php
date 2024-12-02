@@ -41,6 +41,11 @@
                         </tbody>
                     </table>
                 @endif
+                {{-- Enlace para regresar a HOME --}}
+                <a href="{{ url('/dashboard') }}"
+                    class="mt-4 text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 underline font-semibold">
+                    Volver al Home
+                </a>
             </div>
         </div>
     </div>
