@@ -15,6 +15,7 @@ class JoinRequestController extends Controller
         $joinRequests = User_crew_join::with('crew', 'user') // Cargar los datos de los usuarios y crews
                                           ->where('status', 'pending')  // Solo las solicitudes pendientes
                                           ->get();
+                                          
         return view('adminJoinRequests')->with('joinRequests', $joinRequests);
     }
 

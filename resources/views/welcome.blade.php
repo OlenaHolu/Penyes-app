@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -252,7 +253,7 @@
 
     <!-- Sección de Actividades -->
     <section class="schedule">
-        <h2>Horario de actividades</h2>
+        <h2>Programación de Fiestas</h2>
         <p>Explora una variedad de actividades y eventos pensados para toda la familia!</p>
         <ul>
             <li>Concurso de Paellas - Sábado 12:00h</li>

@@ -7,16 +7,58 @@
 
     <div class="flex py-12">
         {{-- Menú Lateral --}}
-        <aside class="w-1/4 bg-gray-100 dark:bg-gray-800 p-4">
-            <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200">Menú</h3>
-            <ul class="mt-4">
-                <li class="mb-2"><a href="/dashboard" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Home</a></li>
-                <li class="mb-2"><a href="/users" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Users</a></li>
-                <li class="mb-2"><a href="/crews" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Crews</a></li>
-                <li class="mb-2"><a href="/platforms" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Platforms</a></li>
-                <li class="mb-2"><a href="/draws" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Draws</a></li>
-                <li class="mb-2"><a href="/payments" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Payments</a></li>
-                <li class="mb-2"><a href="/adminJoinRequests" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Join Requests</a></li>
+        <aside class="w-1/4 bg-white dark:bg-gray-200 text-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="font-semibold text-lg text-gray-800 mb-4">Menú</h3>
+            <ul class="space-y-4">
+                <li>
+                    <a href="/" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/users" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('users') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="/crews" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('crews') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Crews
+                    </a>
+                </li>
+                <li>
+                    <a href="/platforms" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('platforms') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Platforms
+                    </a>
+                </li>
+                <li>
+                    <a href="/draws" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('draws') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Draws
+                    </a>
+                </li>
+                <li>
+                    <a href="/payments" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('payments') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Payments
+                    </a>
+                </li>
+                <li>
+                    <a href="/adminJoinRequests" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('adminJoinRequests') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Join Requests
+                    </a>
+                </li>
             </ul>
         </aside>
 

@@ -20,7 +20,7 @@
                         <tbody>
                             @foreach ($joinRequests as $request)
                                 <tr class="border-t border-gray-300 dark:border-gray-600">
-                                    <td class="px-4 py-2">{{ $request->user->name }}</td>
+                                    <td class="px-4 py-2"><a href="/users/{{ $request->user->id }}/edit">{{ $request->user->name }}</a></td>
                                     <td class="px-4 py-2">{{ $request->crew->name }}</td>
                                     <td class="px-4 py-2">{{ ucfirst($request->status) }}</td>
                                     <td class="px-4 py-2 flex space-x-2">

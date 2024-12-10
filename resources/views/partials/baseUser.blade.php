@@ -7,13 +7,37 @@
 
     <div class="flex py-12">
         {{-- Menú Lateral --}}
-        <aside class="w-1/4 bg-gray-100 dark:bg-gray-800 p-4">
-            <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200">Menú</h3>
-            <ul class="mt-4">
-                <li class="mb-2"><a href="/dashboard" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Home</a></li>
-                <li class="mb-2"><a href="/crewsList" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Crews</a></li>
-                <li class="mb-2"><a href="/drawsList" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Draws</a></li>
-                <li class="mb-2"><a href="/userJoinRequests" class="text-blue-500 hover:text-blue-700 dark:text-blue-300">Mis Solicitudes</a></li>
+        <aside class="w-1/4 bg-white dark:bg-gray-200 text-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="font-semibold text-lg text-gray-800 mb-4">Menú</h3>
+            <ul class="space-y-4">
+                <li>
+                    <a href="/" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/crewsList" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('crewsList') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Crews
+                    </a>
+                </li>
+                <li>
+                    <a href="/drawsList" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('drawsList') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Draws
+                    </a>
+                </li>
+                <li>
+                    <a href="/userJoinRequests" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('userJoinRequests') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        Mis Solicitudes
+                    </a>
+                </li>
             </ul>
         </aside>
 

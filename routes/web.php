@@ -60,7 +60,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/joinRequest/reject/{id}', [JoinRequestController::class, 'reject'])->name('joinRequest.reject');
 });
 
-// Definir la ruta para el formulario de contacto
+// formulario de contacto
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
