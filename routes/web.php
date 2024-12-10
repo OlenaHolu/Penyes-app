@@ -5,6 +5,7 @@ use App\Http\Controllers\JoinRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserCrewJoinController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/joinRequest/approve/{id}', [JoinRequestController::class, 'approve'])->name('joinRequest.approve');
     Route::post('/joinRequest/reject/{id}', [JoinRequestController::class, 'reject'])->name('joinRequest.reject');
 });
+
+// Definir la ruta para el formulario de contacto
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 
 // Rutas de perfil del usuario autenticado
 Route::middleware('auth')->group(function () {

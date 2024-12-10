@@ -5,7 +5,8 @@
         <form action="/search-user" method="get" class="flex items-center">
             <input type="search" name="query" placeholder="Buscar usuario..." required
                 class="flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button style="background-color: blue; color: white; margin-left: 2px; border-radius: 8px; padding: 10px;">
+            <button type="submit"
+                class="ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                 Buscar
             </button>
 
@@ -14,8 +15,8 @@
 
     {{-- Botón para Crear Usuario --}}
     <div class="mb-6">
-        <a href="{{ route('users.create') }}" style="background-color: green"
-            class="inline-block text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 ">
+        <a href="{{ route('crews.create') }}"
+            class="inline-block bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">
             Crear Usuario
         </a>
     </div>
