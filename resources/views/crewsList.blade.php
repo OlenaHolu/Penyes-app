@@ -3,7 +3,7 @@
 @section('content')
     {{-- Formulario de Búsqueda --}}
     <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md mb-6">
-        <form action="/search-user" method="get" class="flex items-center space-x-2">
+        <form action="/search-crew" method="get" class="flex items-center space-x-2">
             <input 
                 type="search" 
                 name="query" 

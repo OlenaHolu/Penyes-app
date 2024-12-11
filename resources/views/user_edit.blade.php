@@ -9,48 +9,35 @@
                     @method('PUT')
 
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre:</label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            value="{{ old('name', $user->name) }}" 
-                            required
+                        <label for="name"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre:</label>
+                        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" required
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200">
                     </div></br>
 
                     <!-- Surname -->
                     <div>
-                        <label for="surname" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Apellido:</label>
-                        <input 
-                            type="text" 
-                            id="surname" 
-                            name="surname" 
-                            value="{{ old('surname', $user->surname) }}" 
+                        <label for="surname"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300">Apellido:</label>
+                        <input type="text" id="surname" name="surname" value="{{ old('surname', $user->surname) }}"
                             required
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200">
                     </div></br>
 
                     <!-- Born Day -->
                     <div>
-                        <label for="bornDay" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Nacimiento:</label>
-                        <input 
-                            type="date" 
-                            id="bornDay" 
-                            name="bornDay" 
-                            value="{{ old('bornDay', $user->bornDay ? $user->bornDay->format('Y-m-d') : '') }}" 
-                            required
+                        <label for="bornDay" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de
+                            Nacimiento:</label>
+                        <input type="date" id="bornDay" name="bornDay"
+                            value="{{ old('bornDay', $user->bornDay ? $user->bornDay->format('Y-m-d') : '') }}" required
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200">
                     </div></br>
 
 
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo Electrónico:</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            value="{{ old('email', $user->email) }}"
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo
+                            Electrónico:</label>
+                        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
                             required
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200">
                     </div></br>
@@ -74,9 +61,11 @@
                     </button>
                 </form>
 
-                {{-- Enlace para regresar a la lista de usuarios --}}
-                <a href="{{ url('/users') }}" style="display: block; margin-top: 20px; text-decoration: underline;">Regresar
-                    a la lista de usuarios</a>
+                {{-- Enlace para volver a la página anterior --}}
+                <a href="javascript:history.back()" 
+                    class="block text-blue-500 hover:underline text-sm font-medium">
+                    Volver a la página anterior
+                </a>
             </div>
         </div>
-@endsection
+    @endsection

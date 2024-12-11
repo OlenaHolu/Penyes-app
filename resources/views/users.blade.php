@@ -15,7 +15,7 @@
 
     {{-- Botón para Crear Usuario --}}
     <div class="mb-6">
-        <a href="{{ route('crews.create') }}"
+        <a href="{{ route('users.create') }}"
             class="inline-block bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">
             Crear Usuario
         </a>

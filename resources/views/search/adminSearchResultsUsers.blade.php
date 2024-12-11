@@ -8,15 +8,23 @@
         <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg">
             <thead class="bg-gray-200 dark:bg-gray-700">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-800 dark:text-gray-300 uppercase tracking-wider">Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-800 dark:text-gray-300 uppercase tracking-wider">Nombre</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-800 dark:text-gray-300 uppercase tracking-wider">Apellido</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-800 dark:text-gray-300 uppercase tracking-wider">Email</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-800 dark:text-gray-300 uppercase tracking-wider">Fecha de Nacimiento</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse ($searchResults as $item)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ $item->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <a href="/users/{{ $item->id }}/edit">
+                                {{ $item->name }}
+                            </a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ $item->surname }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ $item->email }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ \Carbon\Carbon::parse($item->bornDay)->format('d M Y') }}</td>
                     </tr>
                 @empty
                     <tr>
@@ -28,5 +36,11 @@
             </tbody>
         </table>
     </div>
+
+    {{-- Enlace para volver a la página anterior --}}
+    <a href="javascript:history.back()" 
+        class="block text-blue-500 hover:underline text-sm font-medium">
+        Volver a la página anterior
+    </a>
 </div>
 @endsection

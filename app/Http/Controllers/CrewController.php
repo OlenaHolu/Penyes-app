@@ -20,10 +20,14 @@ class CrewController extends Controller
     // Buscar crews
     public function search(Request $request)
     {
-        $this->authorizeAdmin();
         $query = $request->input('query');
         $searchResults = Crew::where('name', 'like', '%' . $query . '%')->get();
-        return view('search-results')->with('searchResults', $searchResults);
+        $isAdmin = Auth::user()->role_id === 1;
+        if($isAdmin){
+            return view('search.adminSearchResultsCrews')->with('searchResults', $searchResults);
+        } else {
+            return view('search.userSearchResultsCrews')->with('searchResults', $searchResults);
+        }   
     }
 
     // Mostrar formulario para editar un crew específico

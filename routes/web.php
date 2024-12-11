@@ -24,6 +24,8 @@ Route::get('/dashboard', function () {
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/search-crew', [CrewController::class, 'search'])->name('crews.search');
+
 
 // Rutas para la gestión de usuarios - solo accesibles para administradores
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -40,7 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Rutas para la gestión de CREWS - solo accesibles para administradores
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/crews', [CrewController::class, 'index'])->name('crews.index');
-    Route::get('/search-crew', [CrewController::class, 'search'])->name('crews.search');
     Route::get('/crews/{crew}/edit', [CrewController::class, 'edit'])->name('crews.edit');
     Route::put('/crews/{crew}', [CrewController::class, 'update'])->name('crews.update');
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');

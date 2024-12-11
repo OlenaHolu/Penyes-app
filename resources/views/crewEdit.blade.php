@@ -77,9 +77,10 @@
                     </button>
                 </form>
 
-                {{-- Enlace para regresar a la lista de crews --}}
-                <a href="{{ url('/crews') }}" style="display: block; margin-top: 20px; text-decoration: underline;">
-                    Regresar a la lista de crews
+                {{-- Enlace para volver a la página anterior --}} 
+                <a href="javascript:history.back()" 
+                    class="block text-blue-500 hover:underline text-sm font-medium"> 
+                    Volver a la página anterior 
                 </a>
             </div>
         </div>

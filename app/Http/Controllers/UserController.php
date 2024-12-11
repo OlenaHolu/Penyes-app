@@ -22,7 +22,7 @@ class UserController extends Controller
         $this->authorizeAdmin();
         $query = $request->input('query');
         $searchResults = User::where('name', 'like', '%' . $query . '%')->get();
-        return view('search-results')->with('searchResults', $searchResults);
+        return view('search.adminSearchResultsUsers')->with('searchResults', $searchResults);
     }
 
     // Mostrar formulario para editar un usuario específico
