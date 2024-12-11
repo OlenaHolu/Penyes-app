@@ -25,7 +25,13 @@
                                         @if ($request->status == 'pending') bg-yellow-200
                                         @elseif ($request->status == 'approved') bg-green-200
                                         @elseif ($request->status == 'rejected') bg-red-200 @endif">
-                                    <td class="px-4 py-2">{{ $request->crew->name }}</td>
+                                    <td class="px-4 py-2">
+                                        @if($request->crew)
+                                            {{ $request->crew->name }}
+                                        @else
+                                            <span class="text-gray-500">Peña eliminada</span>
+                                        @endif
+                                    </td>
                                     <td class="px-4 py-2">{{ ucfirst($request->status) }}</td>
                                     <td class="px-4 py-2">{{ $request->created_at->format('d/m/Y') }}</td>
                                 </tr>

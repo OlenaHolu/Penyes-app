@@ -34,6 +34,11 @@
                         </a>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Año: {{ $crew->year }}</p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Slogan: {{ $crew->slogan }}</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Color: 
+                            <span class="font-semibold" style="color: {{ $crew->color }};">
+                                {{ $crew->color }}
+                            </span>
+                        </p>
                     </div>
                 </li>
             @endforeach

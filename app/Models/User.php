@@ -60,4 +60,19 @@ class User extends Authenticatable
     {
         return $this->role->name === 'admin';
     }
+
+    // Relación con solicitudes de unión
+    public function joinRequests()
+    {
+        return $this->hasMany(User_crew_join::class);
+    }
+
+    // Eliminar las solicitudes asociadas antes de eliminar usuario
+    protected static function booted()
+    {
+        static::deleting(function ($user) {
+            // Elimina las solicitudes de unión asociadas
+            $user->joinRequests()->delete();
+        });
+    }
 }

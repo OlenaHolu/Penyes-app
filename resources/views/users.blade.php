@@ -1,4 +1,5 @@
 @extends('partials.baseAdmin')
+
 @section('content')
     {{-- Formulario de Búsqueda --}}
     <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md mb-6">
@@ -9,7 +10,6 @@
                 class="ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                 Buscar
             </button>
-
         </form>
     </div>
 
@@ -26,21 +26,30 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-4">
             Lista de usuarios
         </h2>
-        <ul class="space-y-2">
+        <div class="space-y-4">
             @foreach ($users as $user)
-                <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex justify-between items-center">
-                    <span class="text-gray-800 dark:text-gray-200">{{ $user->name }}</span>
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <div class="flex flex-col w-1/3 text-left">
+                        <span class="text-gray-800 dark:text-gray-200 font-medium">{{ $user->name }} {{ $user->surname }}</span>
+                    </div>
+                    <div class="flex flex-col w-1/3 text-left">
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $user->email }}</span>
+                    </div>
                     <a href="/users/{{ $user->id }}/edit"
-                        class="text-blue-500 hover:text-blue-700 dark:text-blue-300 hover:underline">Editar</a>
-                </li>
+                        class="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 hover:underline">
+                        Editar
+                    </a>
+                </div>
             @endforeach
-        </ul>
+        </div>
         {{-- Enlace para regresar a HOME --}}
         <a href="{{ url('/dashboard') }}"
             class="mt-4 text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 underline font-semibold">
             Volver al Home
         </a>
     </div>
+
+    {{-- Mensaje de Éxito --}}
     @if (session('success'))
         <div id="successMessage" class="fixed top-5 right-5 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50">
             {{ session('success') }}

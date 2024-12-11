@@ -16,7 +16,7 @@ class JoinRequestController extends Controller
                                           ->where('status', 'pending')  // Solo las solicitudes pendientes
                                           ->get();
                                           
-        return view('adminJoinRequests')->with('joinRequests', $joinRequests);
+        return view('joinRequests.adminJoinRequests')->with('joinRequests', $joinRequests);
     }
 
     /**

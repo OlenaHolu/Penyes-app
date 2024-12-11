@@ -24,19 +24,29 @@
     {{-- Lista de Crews --}}
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-4">
-            Lista de crews
+            Lista de Crews
         </h2>
-        <ul class="space-y-2">
+        <div class="space-y-4">
             @foreach ($crews as $crew)
-                <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex justify-between items-center">
-                    <span class="text-gray-800 dark:text-gray-200">{{ $crew->name }}</span>
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <div class="flex flex-col w-1/4 text-left">
+                        <span class="text-gray-800 dark:text-gray-200 font-medium">{{ $crew->name }}</span>
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $crew->color }}</span>
+                    </div>
+                    <div class="flex flex-col w-1/4 text-left">
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $crew->year }}</span>
+                    </div>
+                    <div class="flex flex-col w-1/4 text-left">
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $crew->slogan }}</span>
+                    </div>
                     <a href="/crews/{{ $crew->id }}/edit"
-                        class="text-blue-500 hover:text-blue-700 dark:text-blue-300 hover:underline">
+                        class="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 hover:underline">
                         Editar
                     </a>
-                </li>
+                </div>
             @endforeach
-        </ul>
+        </div>
+
         {{-- Enlace para regresar a HOME --}}
         <a href="{{ url('/dashboard') }}"
             class="mt-4 text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 underline font-semibold">
@@ -44,6 +54,7 @@
         </a>
     </div>
 
+    {{-- Mensaje de Éxito --}}
     @if (session('success'))
         <div id="successMessage" class="fixed top-5 right-5 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50">
             {{ session('success') }}

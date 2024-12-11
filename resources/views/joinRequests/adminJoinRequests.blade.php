@@ -12,7 +12,7 @@
                         <thead>
                             <tr class="bg-gray-100 dark:bg-gray-700">
                                 <th class="px-4 py-2 text-left">Usuario</th>
-                                <th class="px-4 py-2 text-left">Crew</th>
+                                <th class="px-4 py-2 text-left">Peña</th>
                                 <th class="px-4 py-2 text-left">Estado</th>
                                 <th class="px-4 py-2 text-left">Acciones</th>
                             </tr>
@@ -20,8 +20,26 @@
                         <tbody>
                             @foreach ($joinRequests as $request)
                                 <tr class="border-t border-gray-300 dark:border-gray-600">
-                                    <td class="px-4 py-2"><a href="/users/{{ $request->user->id }}/edit">{{ $request->user->name }}</a></td>
-                                    <td class="px-4 py-2">{{ $request->crew->name }}</td>
+                                    <td class="px-4 py-2">
+                                        @if ($request->user)
+                                            <a href="/users/{{ $request->user->id }}/edit">
+                                                {{ $request->user->name }}
+                                                {{ $request->user->surname }}
+                                                ({{ $request->user->email }})
+                                            </a>
+                                        @else 
+                                            <span class="text-gray-500">Usuario eliminado</span>
+                                        @endif
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        @if ($request->crew)
+                                            <a href="/crews/{{ $request->crew->id }}/edit">
+                                                {{ $request->crew->name }}
+                                            </a>
+                                        @else
+                                            <span class="text-gray-500">Peña eliminada</span>
+                                        @endif
+                                    </td>
                                     <td class="px-4 py-2">{{ ucfirst($request->status) }}</td>
                                     <td class="px-4 py-2 flex space-x-2">
                                         {{-- Botones de Aprobar y Rechazar --}}

@@ -19,7 +19,7 @@ class UserCrewJoinController extends Controller
                                            ->with('crew') 
                                            ->get();
 
-        return view('userJoinRequests')->with('joinRequests', $joinRequests);
+        return view('joinRequests.userJoinRequests')->with('joinRequests', $joinRequests);
     }
 
     public function joinCrew(Request $request, $id)
