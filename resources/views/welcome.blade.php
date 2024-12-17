@@ -21,6 +21,7 @@
             color: white;
             padding: 20px;
             text-align: center;
+            clip-path: polygon(0 20%, 10% 0, 30% 20%, 50% 0, 70% 20%, 90% 0, 100% 20%, 100% 100%, 0 100%);
         }
 
         nav a {
@@ -44,6 +45,7 @@
             text-shadow: 0px 0px 8px #000;
             font-size: 2.5em;
             font-weight: bold;
+            
         }
 
         .carousel h2 {
@@ -172,6 +174,19 @@
             background-color: #2980b9;
         }
 
+        .footer-form {
+            background: #333;
+            clip-path: polygon(0 20%, 10% 0, 30% 20%, 50% 0, 70% 20%, 90% 0, 100% 20%, 100% 100%, 0 100%);
+        }
+
+        .imageAboveFooter {
+            height: 5rem;
+            width: 100%;
+            background: url("/images/vaca.png") no-repeat center;
+            background-size: contain;
+
+        }
+
         /* Responsividad para pantallas pequeñas */
         @media (max-width: 768px) {
             .contact-container {
@@ -183,18 +198,6 @@
             .contact-form {
                 width: 100%;
             }
-        }
-
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .footer p {
-            margin: 0;
-            font-size: 0.9em;
         }
     </style>
 </head>
@@ -315,12 +318,13 @@
         </div>
     </section>
 
-
+    <div class="imageAboveFooter"></div>
     <!-- Footer con Ubicaciones -->
-    <footer class="footer">
-        <p>Penyes App | Las Fiestas de Penyes en tu ciudad</p>
+    <footer class="footer-form text-center text-white h-20 flex flex-col justify-center">
+        <p class="mb-1">Penyes App | Las Fiestas de Penyes en tu ciudad</p>
         <p>Ubicación principal: Plaza Mayor, Ciudad de las Penyes</p>
     </footer>
+
 
 </body>
 
