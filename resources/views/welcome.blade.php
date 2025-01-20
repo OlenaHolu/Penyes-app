@@ -21,7 +21,6 @@
             color: white;
             padding: 20px;
             text-align: center;
-            clip-path: polygon(0 20%, 10% 0, 30% 20%, 50% 0, 70% 20%, 90% 0, 100% 20%, 100% 100%, 0 100%);
         }
 
         nav a {
@@ -45,7 +44,7 @@
             text-shadow: 0px 0px 8px #000;
             font-size: 2.5em;
             font-weight: bold;
-            
+
         }
 
         .carousel h2 {
@@ -174,18 +173,59 @@
             background-color: #2980b9;
         }
 
-        .footer-form {
-            background: #333;
-            clip-path: polygon(0 20%, 10% 0, 30% 20%, 50% 0, 70% 20%, 90% 0, 100% 20%, 100% 100%, 0 100%);
-        }
-
+        /* Imagen encima del footer */
         .imageAboveFooter {
             height: 5rem;
             width: 100%;
             background: url("/images/vaca.png") no-repeat center;
             background-size: contain;
-
         }
+
+        /* Footer */
+        .footer-form {
+            position: relative;
+            background: #333;
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            clip-path: url(#cuernosPath);
+            /* Referencia al SVG para la forma de cuernos */
+            animation: formChange 2s ease-in-out infinite, colorChange 5s ease-in-out infinite alternate;
+        }
+
+        /* Animación dinámica de cambio de forma */
+        @keyframes formChange {
+            0% {
+                clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+                /* Forma recta */
+            }
+
+            50% {
+                clip-path: polygon(0 20%, 10% 0%, 30% 20%, 50% 0%, 70% 20%, 90% 0%, 100% 20%, 100% 100%, 0 100%);
+                /* Forma cuerno */
+            }
+
+            100% {
+                clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+                /* Forma recta */
+            }
+        }
+
+        /* Animación dinámica de cambio de color */
+        @keyframes colorChange {
+            0% {
+                background-color: #333;
+            }
+
+            50% {
+                background-color: #6c2c6e;
+            }
+
+            100% {
+                background-color: #333;
+            }
+        }
+
 
         /* Responsividad para pantallas pequeñas */
         @media (max-width: 768px) {
@@ -325,6 +365,14 @@
         <p>Ubicación principal: Plaza Mayor, Ciudad de las Penyes</p>
     </footer>
 
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+        <defs>
+            <!-- Define el clipPath para la forma de cuernos de toro -->
+            <clipPath id="cuernosPath" clipPathUnits="objectBoundingBox">
+                <path d="M0,0.2 C0.1,0.1, 0.3,0, 0.5,0 C0.7,0, 0.9,0.1, 1,0.2 L1,1 L0,1 Z" />
+            </clipPath>
+        </defs>
+    </svg>
 
 </body>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserCrewJoinController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DrawController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // formulario de contacto
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// sorteo
+Route::get('/draw/{year?}', [DrawController::class, 'show'])->name('draw.show');
+Route::post('/draw', [DrawController::class, 'draw'])->name('draw.draw');
+Route::delete('/draw/{year}', [DrawController::class, 'delete'])->name('draw.delete');
 
 
 // Rutas de perfil del usuario autenticado
