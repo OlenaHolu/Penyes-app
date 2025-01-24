@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->decimal('x');
-            $table->decimal('y');
-            $table->foreignIdFor(Crew::class);
+            $table->integer('x');
+            $table->integer('y');
+            $table->foreignIdFor(Crew::class)->nullable(); 
             $table->year('year');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('location');
+        Schema::dropIfExists('locations'); 
     }
 };
