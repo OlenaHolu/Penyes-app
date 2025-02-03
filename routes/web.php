@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\CrewController;
 use App\Http\Controllers\JoinRequestController;
 use App\Http\Controllers\ProfileController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserCrewJoinController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrawController;
+use App\Http\Controllers\UserPaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +21,9 @@ Route::get('/dashboard', function () {
 
     // Verificar el role_id del usuario y devolver la vista correspondiente
     if ($user->role_id === 1) {
-        return view('dashboard_admin');
+        return view('/admin/dashboard');
     } else {
-        return view('dashboard_user');
+        return view('/user/dashboard');
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -37,6 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/payments', [UserPaymentController::class, 'create'])->name('payments.create');
+    Route::post('/payments', [UserPaymentController::class, 'store'])->name('payments.store');
 
 });
 
@@ -48,6 +52,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');
     Route::get('/crews/create', [CrewController::class, 'create'])->name('crews.create');
     Route::post('/crews', [CrewController::class, 'store'])->name('crews.store');
+    Route::get('/admin/payments', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
+    Route::delete('/admin/payments/{payment}', [AdminPaymentController::class, 'destroy'])->name('admin.payments.destroy');
 });
 
 Route::get('crewsList', [CrewController::class, 'showCrewsList']);

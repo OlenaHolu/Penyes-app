@@ -64,7 +64,7 @@ class User extends Authenticatable
     // Relación con solicitudes de unión
     public function joinRequests()
     {
-        return $this->hasMany(User_crew_join::class);
+        return $this->hasMany(UserCrewJoin::class);
     }
 
     // Eliminar las solicitudes asociadas antes de eliminar usuario

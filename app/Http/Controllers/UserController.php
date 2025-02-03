@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $this->authorizeAdmin();
         $users = User::all();
-        return view('users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     // Buscar usuarios
@@ -22,7 +22,7 @@ class UserController extends Controller
         $this->authorizeAdmin();
         $query = $request->input('query');
         $searchResults = User::where('name', 'like', '%' . $query . '%')->get();
-        return view('search.adminSearchResultsUsers')->with('searchResults', $searchResults);
+        return view('admin.users.search-results')->with('searchResults', $searchResults);
     }
 
     // Mostrar formulario para editar un usuario específico
@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $this->authorizeAdmin();
         $user = User::findOrFail($id);
-        return view('user_edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     // Actualizar usuario
@@ -79,7 +79,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('userCreate');
+        return view('admin.users.create');
     }
 
     public function store(Request $request)

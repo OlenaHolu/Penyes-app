@@ -1,4 +1,4 @@
-@extends('partials.baseUser')
+@extends('layouts.base-user')
 
 @section('content')
     {{-- Formulario de Búsqueda --}}

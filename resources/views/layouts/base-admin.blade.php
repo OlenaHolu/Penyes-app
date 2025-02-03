@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/payments" 
+                    <a href="/admin/payments" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('payments') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
                         Payments

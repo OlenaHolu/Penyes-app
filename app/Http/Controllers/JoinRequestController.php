@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User_crew_join;
+use App\Models\UserCrewJoin;
 use Illuminate\Http\Request;
 
 class JoinRequestController extends Controller
@@ -12,11 +12,11 @@ class JoinRequestController extends Controller
      */
     public function index()
     {
-        $joinRequests = User_crew_join::with('crew', 'user') // Cargar los datos de los usuarios y crews
+        $joinRequests = UserCrewJoin::with('crew', 'user') // Cargar los datos de los usuarios y crews
                                           ->where('status', 'pending')  // Solo las solicitudes pendientes
                                           ->get();
                                           
-        return view('joinRequests.adminJoinRequests')->with('joinRequests', $joinRequests);
+        return view('admin.join-requests')->with('joinRequests', $joinRequests);
     }
 
     /**
@@ -24,7 +24,7 @@ class JoinRequestController extends Controller
      */
     public function approve($id)
     {
-        $request = User_crew_join::findOrFail($id);
+        $request = UserCrewJoin::findOrFail($id);
         
         // Cambiar el estado de la solicitud a "approved"
         $request->status = 'approved';
@@ -39,7 +39,7 @@ class JoinRequestController extends Controller
      */
     public function reject($id)
     {
-        $request = User_crew_join::findOrFail($id);
+        $request = UserCrewJoin::findOrFail($id);
 
         // Cambiar el estado de la solicitud a "rejected"
         $request->status = 'rejected';

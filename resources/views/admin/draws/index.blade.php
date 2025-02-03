@@ -1,4 +1,4 @@
-@extends('partials.baseAdmin')
+@extends('layouts.base-admin')
 
 @section('content')
     <div class="container">

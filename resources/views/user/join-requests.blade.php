@@ -1,4 +1,4 @@
-@extends('partials.baseUser')
+@extends('layouts.base-user')
 
 @section('content')
     <div class="flex-1 max-w-7xl mx-auto sm:px-6 lg:px-8">

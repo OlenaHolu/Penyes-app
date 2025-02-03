@@ -1,4 +1,4 @@
-@extends('partials.baseAdmin')
+@extends('layouts.base-admin')
 
 @section('content')
 <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">

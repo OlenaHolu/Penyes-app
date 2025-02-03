@@ -12,7 +12,7 @@ class Crew extends Model
     // Relación con solicitudes de unión
     public function joinRequests()
     {
-        return $this->hasMany(User_crew_join::class);
+        return $this->hasMany(UserCrewJoin::class);
     }
 
     // Eliminar las solicitudes asociadas antes de eliminar la crew

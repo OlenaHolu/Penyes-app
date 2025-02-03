@@ -30,7 +30,7 @@ class DrawController extends Controller
         }
         $rangeYears = range($currentYear - 4, $currentYear);
         rsort($rangeYears);
-        return view('draws.drawsAdminView', [
+        return view('admin.draws.index', [
             'locations' => $locations,
             'year' => $year ?? now()->year,
             'showDrawButton' => $showDrawButton,

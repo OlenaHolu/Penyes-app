@@ -1,4 +1,4 @@
-@extends('partials.baseUser')
+@extends('layouts.base-admin')
 
 @section('content')
     <div class="max-w-7xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
@@ -26,7 +26,7 @@
                     @forelse ($searchResults as $item)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                <a href="/crews/{{ $item->id }}">
+                                <a href="/crews/{{ $item->id }}/edit">
                                     {{ $item->name }}
                                 </a>
                             </td>
@@ -40,7 +40,7 @@
                     @empty
                         <tr>
                             <td colspan="2" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                                No se encontraron usuarios que coincidan con la búsqueda.
+                                No se encontraron peñas que coincidan con la búsqueda.
                             </td>
                         </tr>
                     @endforelse
@@ -48,8 +48,7 @@
             </table>
         </div>
         {{-- Enlace para volver a la página anterior --}}
-        <a href="javascript:history.back()" 
-            class="block text-blue-500 hover:underline text-sm font-medium">
+        <a href="javascript:history.back()" class="block text-blue-500 hover:underline text-sm font-medium">
             Volver a la página anterior
         </a>
     </div>

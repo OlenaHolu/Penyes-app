@@ -14,7 +14,7 @@ class CrewController extends Controller
     {
         $this->authorizeAdmin();
         $crews = Crew::all();
-        return view('crews')->with('crews', $crews);
+        return view('admin.crews.index')->with('crews', $crews);
     }
 
     // Buscar crews
@@ -24,9 +24,9 @@ class CrewController extends Controller
         $searchResults = Crew::where('name', 'like', '%' . $query . '%')->get();
         $isAdmin = Auth::user()->role_id === 1;
         if($isAdmin){
-            return view('search.adminSearchResultsCrews')->with('searchResults', $searchResults);
+            return view('admin.crews.search-results')->with('searchResults', $searchResults);
         } else {
-            return view('search.userSearchResultsCrews')->with('searchResults', $searchResults);
+            return view('user.crews.search-results')->with('searchResults', $searchResults);
         }   
     }
 
@@ -35,7 +35,7 @@ class CrewController extends Controller
     {
         $this->authorizeAdmin();
         $crew = Crew::findOrFail($id);
-        return view('crewEdit')->with('crew', $crew);
+        return view('admin.crews.edit')->with('crew', $crew);
     }
 
     // Actualizar crew
@@ -77,7 +77,7 @@ class CrewController extends Controller
 
     public function create()
     {
-        return view('crewCreate');
+        return view('admin.crews.create');
     }
 
     public function store(Request $request)
@@ -101,11 +101,11 @@ class CrewController extends Controller
     }
     public function showCrewsList(){
         $crews = Crew::all();
-        return view('crewsList')->with('crews', $crews);
+        return view('/user/crews/crews-list')->with('crews', $crews);
     }
 
     public function showCrewInfo($id){
         $crew = Crew::findOrFail($id);
-        return view('crewInfo')->with('crew', $crew);
+        return view('/user/crews/crew-info')->with('crew', $crew);
     }
 }
