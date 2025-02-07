@@ -11,7 +11,7 @@ class UserCrew extends Model
 
     protected $table = 'user_crews';
 
-    protected $fillable = ['user_id', 'crew_id', 'status'];
+    protected $fillable = ['user_id', 'crew_id', 'year', 'status'];
 
     public function user()
     {

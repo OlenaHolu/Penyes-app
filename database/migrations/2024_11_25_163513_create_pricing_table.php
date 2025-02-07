@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\User;
-use App\Models\Pricing;
+use App\Models\Crew;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,19 +12,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Pricing::class);
-            $table->string('status')->default('pending');
+        Schema::create('pricings', function (Blueprint $table) {
+            $table->id(); 
+            $table->foreignIdFor(Crew::class);
+            $table->decimal('amount', 8, 2); 
+            $table->year('year');
             $table->timestamps();
         });
-    }
+    }  
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('pricings');
     }
 };

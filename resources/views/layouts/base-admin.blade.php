@@ -11,52 +11,59 @@
             <h3 class="font-semibold text-lg text-gray-800 mb-4">Menú</h3>
             <ul class="space-y-4">
                 <li>
+                    <a href="/test-react" 
+                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
+                       {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
+                        TEST REACT
+                    </a>
+                </li>
+                <li>
                     <a href="/" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Home
+                       Pagina de Inicio
                     </a>
                 </li>
                 <li>
                     <a href="/users" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('users') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Users
+                        Usuarios
                     </a>
                 </li>
                 <li>
                     <a href="/crews" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('crews') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Crews
+                        Peñas
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="/platforms" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('platforms') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
                         Platforms
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/draw/2025" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('draws') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Draws
+                        Sorteos
                     </a>
                 </li>
                 <li>
                     <a href="/admin/payments" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('payments') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Payments
+                        Pagos
                     </a>
                 </li>
                 <li>
                     <a href="/adminJoinRequests" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('adminJoinRequests') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        Join Requests
+                       Solicitudes de unión
                     </a>
                 </li>
             </ul>

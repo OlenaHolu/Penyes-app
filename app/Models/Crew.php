@@ -9,18 +9,15 @@ class Crew extends Model
 {
     use HasFactory;
 
-    // Relación con solicitudes de unión
-    public function joinRequests()
+    public function userCrews()
     {
-        return $this->hasMany(UserCrewJoin::class);
+        return $this->hasMany(UserCrew::class);
     }
 
-    // Eliminar las solicitudes asociadas antes de eliminar la crew
     protected static function booted()
     {
         static::deleting(function ($crew) {
-            // Elimina las solicitudes de unión asociadas
-            $crew->joinRequests()->delete();
+            $crew->userCrews()->delete();
         });
     }
 

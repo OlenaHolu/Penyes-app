@@ -1,25 +1,31 @@
 @extends('layouts.base-user')
+
 @section('content')
-    <h1>Realizar Pago</h1>
-    <form id="payment-form">
-        @csrf
-        <label for="amount">Monto:</label>
-        <input type="number" id="amount" name="amount" required>
-        
-        <div id="card-element"></div>
-        <button id="submit">Pagar</button>
-    </form>
+    <div class="max-w-3xl mx-auto px-6 py-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Selecciona la Cuota a Pagar</h2>
 
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        const stripe = Stripe("{{ env('STRIPE_KEY') }}");
-        const elements = stripe.elements();
-        const cardElement = elements.create("card");
-        cardElement.mount("#card-element");
+        @if(session('success'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded">
+                {{ session('success') }}
+            </div>
+        @endif
 
-        document.getElementById("payment-form").addEventListener("submit", async (event) => {
-            event.preventDefault();
-            alert("Pago de prueba realizado con éxito.");
-        });
-    </script>
+        <div class="grid gap-6">
+            @foreach($pricingOptions as $pricing)
+                <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+                    <h5 class="text-lg font-semibold text-gray-700">Crew: {{ $pricing->crew->name }}</h5>
+                    <p class="text-sm text-gray-600">Año: <span class="font-medium">{{ $pricing->year }}</span></p>
+                    <p class="text-lg font-bold text-gray-900">Monto: ${{ $pricing->amount }}</p>
+
+                    <form action="{{ route('payments.store') }}" method="POST" class="mt-4">
+                        @csrf
+                        <input type="hidden" name="pricing_id" value="{{ $pricing->id }}">
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            Pagar
+                        </button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

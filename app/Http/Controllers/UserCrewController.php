@@ -26,6 +26,7 @@ class UserCrewController extends Controller
     {
         $user = Auth::user(); 
         $crew = Crew::findOrFail($id);
+        $currentYear = now()->year;
 
         $existingRequest = UserCrew::where('user_id', $user->id)
                                               ->where('crew_id', $crew->id)
@@ -34,10 +35,11 @@ class UserCrewController extends Controller
         if ($existingRequest) {
             return redirect()->back()->with('error', 'Ya has enviado una solicitud a este crew.');
         }
-
+        
         UserCrew::create([
             'user_id' => $user->id,
             'crew_id' => $crew->id,
+            'year' => $currentYear,
             'status' => 'pending',  
         ]);
 

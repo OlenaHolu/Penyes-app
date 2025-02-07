@@ -8,9 +8,16 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserCrewJoinController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrawController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserCrewController;
 use App\Http\Controllers\UserPaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/test-react', function () {
+    return view('react'); 
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,8 +46,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::get('/payments', [UserPaymentController::class, 'create'])->name('payments.create');
-    Route::post('/payments', [UserPaymentController::class, 'store'])->name('payments.store');
 
 });
 
@@ -52,20 +57,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');
     Route::get('/crews/create', [CrewController::class, 'create'])->name('crews.create');
     Route::post('/crews', [CrewController::class, 'store'])->name('crews.store');
-    Route::get('/admin/payments', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
-    Route::delete('/admin/payments/{payment}', [AdminPaymentController::class, 'destroy'])->name('admin.payments.destroy');
+    Route::get('/admin/payments', [PaymentController::class, 'showAdminView'])->name('admin.payments.index');
 });
 
 Route::get('crewsList', [CrewController::class, 'showCrewsList']);
 Route::get('/crews/{crew}', [CrewController::class, 'showCrewInfo']);
 
-Route::post('/joinCrew/{id}', [UserCrewJoinController::class, 'joinCrew']);
-Route::get('/userJoinRequests', [UserCrewJoinController::class, 'index']);
+Route::post('/joinCrew/{id}', [UserCrewController::class, 'joinCrew']);
+Route::get('/userJoinRequests', [UserCrewController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/adminJoinRequests', [JoinRequestController::class, 'index'])->name('joinRequest.index');
     Route::post('/joinRequest/approve/{id}', [JoinRequestController::class, 'approve'])->name('joinRequest.approve');
     Route::post('/joinRequest/reject/{id}', [JoinRequestController::class, 'reject'])->name('joinRequest.reject');
+
+    Route::get('/payments', [PaymentController::class, 'create'])->name('payments.create');
+    Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+    Route::get('/payments/success', [PaymentController::class, 'success'])->name('payments.success');
 });
 
 // formulario de contacto
