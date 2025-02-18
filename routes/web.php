@@ -9,8 +9,10 @@ use App\Http\Controllers\UserCrewJoinController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrawController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReactDrawController;
 use App\Http\Controllers\UserCrewController;
 use App\Http\Controllers\UserPaymentController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test-react', function () {
     return view('react'); 
 });
+Route::get('/draw-user-view', function () {
+    return view('/user/draw/index'); 
+});
+
+// REACT API Routes
+Route::get('/api/draw/years', [ReactDrawController::class, 'getYears']);
+Route::get('/api/draw/locations', [ReactDrawController::class, 'getLocations']);
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,7 +81,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/joinRequest/approve/{id}', [JoinRequestController::class, 'approve'])->name('joinRequest.approve');
     Route::post('/joinRequest/reject/{id}', [JoinRequestController::class, 'reject'])->name('joinRequest.reject');
 
-    Route::get('/payments', [PaymentController::class, 'create'])->name('payments.create');
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
     Route::get('/payments/success', [PaymentController::class, 'success'])->name('payments.success');
 });
@@ -90,6 +100,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
+    Route::post('/wallet/deposit', [WalletController::class, 'deposit'])->name('wallet.deposit');
+    Route::post('/wallet/pay', [WalletController::class, 'pay'])->name('wallet.pay');
 });
 
 require __DIR__ . '/auth.php';

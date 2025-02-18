@@ -82,8 +82,6 @@
             </table>
         </div>
 
-
-
         <!-- Draw results -->
         <div class="results mt-4">
             <h3>Resultados del Sorteo:</h3>

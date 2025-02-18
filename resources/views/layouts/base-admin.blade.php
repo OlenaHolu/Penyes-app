@@ -11,13 +11,6 @@
             <h3 class="font-semibold text-lg text-gray-800 mb-4">Menú</h3>
             <ul class="space-y-4">
                 <li>
-                    <a href="/test-react" 
-                       class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
-                       {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">
-                        TEST REACT
-                    </a>
-                </li>
-                <li>
                     <a href="/" 
                        class="block px-4 py-2 rounded-lg text-lg font-medium transition duration-300 
                        {{ request()->is('') ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-100 hover:text-blue-700' }}">

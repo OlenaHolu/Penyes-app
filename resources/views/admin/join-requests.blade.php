@@ -1,5 +1,18 @@
 @extends('layouts.base-admin')
 @section('content')
+{{-- Mostrar mensaje de éxito --}}
+@if (session('success'))
+<div id="successMessage" class="fixed top-5 right-5 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50">
+    {{ session('success') }}
+</div>
+
+<script>
+    // Función para ocultar el mensaje después de unos segundos
+    setTimeout(function() {
+        document.getElementById('successMessage').style.display = 'none';
+    }, 5000); // Se ocultará después de 5 segundos
+</script>
+@endif
     <div class="flex-1 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">

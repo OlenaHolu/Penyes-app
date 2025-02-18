@@ -32,8 +32,15 @@ class UserCrewController extends Controller
                                               ->where('crew_id', $crew->id)
                                               ->first();
 
+        $existingApprovedRequest = UserCrew::where('user_id', $user->id)
+                                              ->where('status', 'approved')
+                                              ->first();                                      
+
         if ($existingRequest) {
             return redirect()->back()->with('error', 'Ya has enviado una solicitud a este crew.');
+        }
+        if ($existingApprovedRequest) {
+            return redirect()->back()->with('error', 'Ya has unido a una crew!');
         }
         
         UserCrew::create([

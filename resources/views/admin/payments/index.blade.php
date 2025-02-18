@@ -11,7 +11,7 @@
                         <th class="py-3 px-6 text-left">Usuario</th>
                         <th class="py-3 px-6 text-left">Año</th>
                         <th class="py-3 px-6 text-left">Crew</th>
-                        <th class="py-3 px-6 text-left">Monto</th>
+                        <th class="py-3 px-6 text-left">Importe</th>
                         <th class="py-3 px-6 text-left">Estado</th>
                     </tr>
                 </thead>

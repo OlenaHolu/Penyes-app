@@ -7,41 +7,35 @@ use Illuminate\Http\Request;
 
 class JoinRequestController extends Controller
 {
-    /**
-     * Mostrar las solicitudes de unión del usuario.
-     */
     public function index()
     {
-        $joinRequests = UserCrew::with('crew', 'user') // Cargar los datos de los usuarios y crews
-                                          ->where('status', 'pending')  // Solo las solicitudes pendientes
+        $joinRequests = UserCrew::with('crew', 'user') 
+                                          ->where('status', 'pending')
                                           ->get();
                                           
         return view('admin.join-requests')->with('joinRequests', $joinRequests);
     }
 
-    /**
-     * Aprobar una solicitud de unión.
-     */
     public function approve($id)
-    {
-        $request = UserCrew::findOrFail($id);
-        
-        // Cambiar el estado de la solicitud a "approved"
-        $request->status = 'approved';
-        $request->save();
-        
-        return redirect('/adminJoinRequests')->with('success', 'Solicitud aprobada correctamente.');
+{
+    $request = UserCrew::findOrFail($id);
+    $userId = $request->user_id;
 
-    }
+    UserCrew::where('user_id', $userId)
+            ->where('status', 'pending') 
+            ->update(['status' => 'rejected']);
 
-    /**
-     * Rechazar una solicitud de unión.
-     */
+    $request->status = 'approved';
+    $request->save();
+
+    return redirect('/adminJoinRequests')->with('success', 'Solicitud aprobada y otras solicitudes del usuario rechazadas.');
+}
+
+
     public function reject($id)
     {
         $request = UserCrew::findOrFail($id);
 
-        // Cambiar el estado de la solicitud a "rejected"
         $request->status = 'rejected';
         $request->save();
 

@@ -7,7 +7,7 @@
             <input 
                 type="search" 
                 name="query" 
-                placeholder="Buscar crew..." 
+                placeholder="Buscar peña..." 
                 required 
                 class="flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200"
             >
@@ -23,7 +23,7 @@
     {{-- Lista de Crews --}}
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-4">
-            Lista de crews
+            Lista de peñas
         </h2>
         <ul class="space-y-4">
             @foreach ($crews as $crew)

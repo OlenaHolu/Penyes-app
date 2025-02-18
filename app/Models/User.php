@@ -75,4 +75,9 @@ class User extends Authenticatable
             $user->joinRequests()->delete();
         });
     }
+
+    public function wallet(){
+        return $this->hasOne(Wallet::class);
+    }
+
 }

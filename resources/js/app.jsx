@@ -1,18 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import DrawManagement from "./components/DrawManagement";
+import Background from "./components/Background"; 
 
-function AppReact() {
-    return (
-        <div>
-            <h1>Hello, World!</h1>
-        </div>
+const rootElement = document.getElementById("drawManagement");
+
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+        <Background> 
+            <DrawManagement /> 
+        </Background>
     );
+} else {
+    console.error("Element with id 'drawManagement' not found.");
 }
-
-const root = ReactDOM.createRoot(document.getElementById('appReact'));
-root.render(<AppReact />);
-
-/*
-useEffect
-.fetch
-*/

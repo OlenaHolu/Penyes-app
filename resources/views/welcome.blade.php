@@ -100,8 +100,6 @@
             margin-top: 20px;
         }
 
-
-        /* Contenedor de contactos y formulario */
         .contact-container {
             display: flex;
             justify-content: space-between;
@@ -112,7 +110,6 @@
         .contacts,
         .contact-form {
             width: 48%;
-            /* Ambos ocupan el 48% del ancho disponible */
             background: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -173,7 +170,6 @@
             background-color: #2980b9;
         }
 
-        /* Imagen encima del footer */
         .imageAboveFooter {
             height: 5rem;
             width: 100%;
@@ -181,7 +177,6 @@
             background-size: contain;
         }
 
-        /* Footer */
         .footer-form {
             position: relative;
             background: #333;
@@ -189,29 +184,23 @@
             padding: 1rem;
             color: white;
             clip-path: url(#cuernosPath);
-            /* Referencia al SVG para la forma de cuernos */
             animation: formChange 2s ease-in-out infinite, colorChange 5s ease-in-out infinite alternate;
         }
 
-        /* Animación dinámica de cambio de forma */
         @keyframes formChange {
             0% {
                 clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
-                /* Forma recta */
             }
 
             50% {
                 clip-path: polygon(0 20%, 10% 0%, 30% 20%, 50% 0%, 70% 20%, 90% 0%, 100% 20%, 100% 100%, 0 100%);
-                /* Forma cuerno */
             }
 
             100% {
                 clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
-                /* Forma recta */
             }
         }
 
-        /* Animación dinámica de cambio de color */
         @keyframes colorChange {
             0% {
                 background-color: #333;
@@ -226,8 +215,6 @@
             }
         }
 
-
-        /* Responsividad para pantallas pequeñas */
         @media (max-width: 768px) {
             .contact-container {
                 flex-direction: column;
@@ -250,10 +237,9 @@
         </div>
 
         <script>
-            // Función para ocultar el mensaje después de unos segundos
             setTimeout(function() {
                 document.getElementById('successMessage').style.display = 'none';
-            }, 5000); // Se ocultará después de 5 segundos
+            }, 5000); 
         </script>
     @endif
     <header>
