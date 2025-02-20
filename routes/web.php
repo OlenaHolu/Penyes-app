@@ -16,6 +16,7 @@ use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/wallet-content', [WalletController::class, 'getWalletContent']);
 
 Route::get('/test-react', function () {
     return view('react'); 

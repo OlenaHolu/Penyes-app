@@ -8,6 +8,7 @@ export default function DrawManagement() {
   const [locations, setLocations] = useState([]);
   const [errors, setErrors] = useState([]);
 
+  // get years list
   useEffect(() => {
     fetch(`${API_BASE_URL}/draw/years`)
       .then((res) => res.json())
@@ -15,6 +16,7 @@ export default function DrawManagement() {
       .catch((err) => console.error("Error fetching years:", err));
   }, []); // Runs only once on mount
 
+  // get locations for a specific year
   useEffect(() => {
     fetch(`${API_BASE_URL}/draw/locations?year=${year}`)
       .then((res) => res.json())
