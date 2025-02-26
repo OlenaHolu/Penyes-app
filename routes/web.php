@@ -64,6 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/crews', [CrewController::class, 'index'])->name('crews.index');
     Route::get('/crews/{crew}/edit', [CrewController::class, 'edit'])->name('crews.edit');
+    Route::get('/crews/{crew}/users', [CrewController::class, 'showUsersList'])->name('crews.showUsers');
     Route::put('/crews/{crew}', [CrewController::class, 'update'])->name('crews.update');
     Route::delete('/crews/{crew}', [CrewController::class, 'destroy'])->name('crews.destroy');
     Route::get('/crews/create', [CrewController::class, 'create'])->name('crews.create');

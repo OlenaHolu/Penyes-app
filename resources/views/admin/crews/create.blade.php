@@ -45,6 +45,17 @@
                 class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200"
             >
         </div>
+        <div>
+            <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Precio para año {{ now()->year }}</label>
+            <input 
+                type="text" 
+                id="price" 
+                name="price" 
+                required 
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-200"
+            >
+        </div>
         <button 
             type="submit" 
             class="w-full bg-green-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400" style="background: green">

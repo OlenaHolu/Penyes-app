@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Pricing::class);
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Pricing::class)->constrained()->onDelete('cascade');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

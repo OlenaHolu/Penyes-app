@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crew;
+use App\Models\Pricing;
 use App\Models\User_crew_join;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,6 @@ class CrewController extends Controller
         }   
     }
 
-    // Mostrar formulario para editar un crew específico
     public function edit($id)
     {
         $this->authorizeAdmin();
@@ -38,7 +38,16 @@ class CrewController extends Controller
         return view('admin.crews.edit')->with('crew', $crew);
     }
 
-    // Actualizar crew
+    public function showUsersList($id)
+    {
+        $this->authorizeAdmin();
+        $crew = Crew::findOrFail($id);
+        $users = $crew->userCrews()->where('status', 'approved')->with('user')->get();
+    
+        return view('admin.crews.users-list', compact('crew', 'users'));
+    }
+    
+
     public function update(Request $request, $id)
     {
         $this->authorizeAdmin();
@@ -86,15 +95,21 @@ class CrewController extends Controller
             'name' => 'required|string|max:255',
             'year' => 'required|numeric|digits:4',
             'slogan'=> 'required|string|max:255',
-            'color' => 'required|string|max:255'
+            'color' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0'
         ]);
 
-        Crew::create([
+        $crew = Crew::create([
             'name' => $request->name,
             'year' => $request->year,
             'slogan' => $request->slogan,
             'color' => $request->color,
             'platform_id' => null
+        ]);
+        Pricing::create([
+            'crew_id' => $crew->id,
+            'amount' => $request->price,
+            'year' => $request->year
         ]);
 
         return redirect()->route('crews.index')->with('success', 'Crew creado correctamente.');

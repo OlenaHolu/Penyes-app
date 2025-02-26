@@ -1,7 +1,7 @@
 @if (Auth::user()->role_id == 1)
     <nav x-data="{ open: false }" class="bg-blue-200 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-@else
-    <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+    @else
+        <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
 @endif
 <!-- Primary Navigation Menu -->
 <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
@@ -29,6 +29,9 @@
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="https://cdn.lordicon.com/lordicon.js"></script>
                 {{-- ✅ Lordicon Wallet Icon (Triggers SweetAlert) --}}
+                <div class="text-sm font-medium rounded-md text-gray-500 dark:text-gray-400">
+                    {{ auth()->user()->wallet->balance ?? '0.00' }} €
+                </div>
                 <lord-icon src="https://cdn.lordicon.com/kkdnopsh.json" trigger="hover"
                     style="width:40px;height:40px; cursor: pointer;" onclick="openWalletModal()">
                 </lord-icon>
@@ -126,7 +129,7 @@
             .then(data => {
                 Swal.fire({
                     title: "Tu Cartera",
-                    html: data, 
+                    html: data,
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,
@@ -136,56 +139,55 @@
                         Swal.fire("¡Guardado!", "Tu monedero se ha actualizado.", "success");
                     }
                 });
-    
-                // Attach event listener to form AFTER loading modal content
+
                 setTimeout(() => {
                     const depositForm = document.getElementById("deposit-form");
                     if (depositForm) {
-                        depositForm.addEventListener("submit", function (event) {
+                        depositForm.addEventListener("submit", function(event) {
                             event.preventDefault();
                             let formData = new FormData(depositForm);
                             let amount = document.getElementById("deposit-amount").value;
-    
+
                             fetch("{{ route('wallet.deposit') }}", {
-                                method: "POST",
-                                body: formData,
-                                headers: {
-                                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                                }
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: '¡Depósito exitoso!',
-                                        text: `Has depositado ${amount} EUR en tu cuenta.`,
-                                        confirmButtonColor: '#3085d6'
-                                    }).then(() => {
-                                        document.getElementById("wallet-balance").textContent = data.new_balance + " EUR";
-                                        document.getElementById("deposit-amount").value = "";
-                                    });
-                                } else {
+                                    method: "POST",
+                                    body: formData,
+                                    headers: {
+                                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                                    }
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: '¡Depósito exitoso!',
+                                            text: `Has depositado ${amount} EUR en tu cuenta.`,
+                                            confirmButtonColor: '#3085d6'
+                                        }).then(() => {
+                                            window.location.reload();
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: '¡Error!',
+                                            text: data.message ||
+                                                'Ocurrió un problema al depositar.',
+                                            confirmButtonColor: '#d33'
+                                        });
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Error:", error);
                                     Swal.fire({
                                         icon: 'error',
                                         title: '¡Error!',
-                                        text: data.message || 'Ocurrió un problema al depositar.',
+                                        text: 'No se pudo procesar el depósito.',
                                         confirmButtonColor: '#d33'
                                     });
-                                }
-                            })
-                            .catch(error => {
-                                console.error("Error:", error);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: '¡Error!',
-                                    text: 'No se pudo procesar el depósito.',
-                                    confirmButtonColor: '#d33'
                                 });
-                            });
                         });
                     }
                 }, 500);
             });
     }
-    </script>
+</script>

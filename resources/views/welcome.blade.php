@@ -280,34 +280,55 @@
         </div>
     </section>
 
-    <!-- Sección de Actividades -->
     <section class="schedule">
-        <h2>Programación de Fiestas</h2>
-        <p>Explora una variedad de actividades y eventos pensados para toda la familia!</p>
+        <h2>📅 Programación de Fiestas 2024</h2>
+        <p>Descubre los eventos, conciertos, toros, verbenas y mucho más que hacen vibrar a Vall de Uxó.</p>
         <ul>
-            <li>Concurso de Paellas - Sábado 12:00h</li>
-            <li>Fiesta de la Espuma - Domingo 16:00h</li>
-            <li>Espectáculo Musical - Sábado 20:00h</li>
-            <li>Correfoc - Viernes 22:00h</li>
+            <li><strong>Marzo - Fiestas de San José</strong></li>
+            <ul>
+                <li>🔥 Encendido de la hoguera</li>
+                <li>🎶 Conciertos y espectáculos en vivo</li>
+                <li>🍽️ Comida popular y concursos gastronómicos</li>
+            </ul>
+            <li><strong>Junio - Fiestas de San Juan</strong></li>
+            <ul>
+                <li>🎆 Espectáculo de fuegos artificiales</li>
+                <li>🏇 Encierros y festejos taurinos</li>
+                <li>🏆 Competiciones deportivas y juegos tradicionales</li>
+            </ul>
+            <li><strong>Septiembre - Fiestas Patronales en Honor a la Sagrada Familia y el Santísimo Cristo</strong></li>
+            <ul>
+                <li>🎡 Feria y atracciones</li>
+                <li>🐂 Bous al carrer</li>
+                <li>🎤 Actuaciones musicales y verbenas</li>
+            </ul>
         </ul>
+        <p>📌 <em>Consulta nuestra web y redes sociales para actualizaciones y novedades de última hora.</em></p>
     </section>
 
-    <!-- Sección de Horarios -->
+    <!-- Sección About -->
     <section class="about">
-        <h2>About</h2>
-        <p>Este es el horario general de las actividades principales de las fiestas.</p>
+        <h2>Sobre Nosotros</h2>
+        <p>Las peñas de Vall de Uxó representan el espíritu festivo, la unión y la alegría de nuestra gente. Formadas por grupos de amigos y familias, cada peña es parte fundamental de nuestras celebraciones, organizando eventos, participando en concursos y manteniendo vivas nuestras tradiciones.</p>
+        
+        <h3>🌟 ¿Qué hacemos?</h3>
         <ul>
-            <li>Lunes - Viernes: 10:00h - 22:00h</li>
-            <li>Sábado y Domingo: 09:00h - 23:00h</li>
+            <li>🎭 Organizamos actividades culturales, deportivas y gastronómicas.</li>
+            <li>🎉 Participamos en los festejos populares de la ciudad.</li>
+            <li>👨‍👩‍👧‍👦 Fomentamos la convivencia y el compañerismo entre los vecinos.</li>
         </ul>
+
+        <h3>💬 ¿Quieres formar parte de una peña o crear la tuya?</h3>
+        <p>Ponte en contacto con nosotros y únete a la fiesta. ¡Te esperamos con los brazos abiertos!</p>
     </section>
 
     <section id="contacto">
         <div class="contact-container">
             <div class="contacts">
                 <h3>
-                    <span style="margin-left: 10px; font-size: 1.2em; color: #333;">Contactos</span>
+                    <span style="margin-left: 10px; font-size: 1.3em; color: #333;">Contactos</span>
                 </h3>
+                <br />
                 <p><i class="fas fa-envelope"></i> Correo electrónico: <a
                         href="mailto:info@ecoblog.com">info@techsolutions.com</a></p>
                 <p><i class="fas fa-phone"></i> Teléfono: +34 123 456 789</p>

@@ -23,6 +23,9 @@ class Wallet extends Model
         $this->save();
     }
 
+    public function balance(){
+        return $this->balance();
+    }
     // Use money for a payment
     public function pay($amount)
     {

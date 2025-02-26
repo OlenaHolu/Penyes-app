@@ -39,6 +39,10 @@
                     <div class="flex flex-col w-1/4 text-left">
                         <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $crew->slogan }}</span>
                     </div>
+                    <a href="/crews/{{ $crew->id }}/users"
+                        class="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 hover:underline">
+                        Mostrar usuarios
+                    </a>
                     <a href="/crews/{{ $crew->id }}/edit"
                         class="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500 hover:underline">
                         Editar
